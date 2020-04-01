@@ -2,9 +2,7 @@ name: Update using stargazed
 
 on:
   schedule:
-    - cron: "30 0 * * *"
-  pull_request:
-    branches: [ master ]
+    - cron: "0 16 * * *"
     
 jobs:
   update:
@@ -22,7 +20,6 @@ jobs:
             --username cometkim \
             --repo awesome-list \
             --message "Update awesome list using stargazed" \
-            --workflow \
             --sort
         env:
           GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
