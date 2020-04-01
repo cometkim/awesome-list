@@ -3,6 +3,8 @@ name: Update using stargazed
 on:
   schedule:
     - cron: "30 0 * * *"
+  pull_request:
+    branches: [ master ]
     
 jobs:
   update:
