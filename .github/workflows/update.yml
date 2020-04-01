@@ -1,0 +1,26 @@
+name: Update using stargazed
+
+on:
+  schedule:
+    - cron: "30 0 * * *"
+    
+jobs:
+  update:
+    name: Update using stargazed
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@master
+        with:
+          node-version: 12.x
+      - name: Run stargazed
+        run: |
+          npx stargazed \
+            --token ${GITHUB_TOKEN} \
+            --username cometkim \
+            --repo awesome-list \
+            --message "Update awesome list using stargazed" \
+            --workflow \
+            --sort
+        env:
+          GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
